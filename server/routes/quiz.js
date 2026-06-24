@@ -1,0 +1,30 @@
+import express from 'express'
+import Quiz from '../models/quizes.js';
+
+const router=express.Router();
+
+router.get('/',(req,res)=>{
+    res.redirect('/dashboard')
+})
+
+router.post('/dashboard',(req,res)=>{
+    Quiz.create(req.body)
+     .then(result=>{
+        res.redirect('/dashboard');
+     })
+     .catch(err=>console.log(err))
+})
+
+router.get('/dashboard',(req,res)=>{
+    Quiz.find()
+     .then(result=>res.send(result))
+     .catch(err=>console.log(err))
+})
+
+router.get('/:id',(req,res)=>{
+    Quiz.findById(req.params.id)
+     .then(result=>res.send(result))
+     .catch(err=>console.log(err))
+})
+
+export {router}
