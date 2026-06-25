@@ -3,10 +3,11 @@ import { useState } from "react"
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { useNavigate } from "react-router-dom"
 import { MdDelete } from "react-icons/md";
+import {motion} from 'framer-motion'
 
 const DashBoard=()=>{
 
-    const [quizes,setQuizzes]=useState([])
+    const [quizes,setQuizzes]=useState(null)
     const navigate=useNavigate()
 
     const getQuizes=async()=>{
@@ -36,6 +37,10 @@ const DashBoard=()=>{
 
     }
 
+    const handleOnClickGetQuiz=async()=>{
+
+    }
+
     
 
     return(
@@ -61,30 +66,40 @@ const DashBoard=()=>{
         
         <hr/>
 
-        {quizes.length==0 ? (
-            <p style={{fontSize:20}}>You have no Quizes Created</p>
-        ) : (
-            <div className="d-flex flex-column gap-3">
-                {quizes.map((quiz)=>{
-                    return <div className="d-flex gap-5 align-items-center">
-                            <div style={{
-                                marginLeft:'3%',
-                                border:'solid',
-                                borderColor:'grey',
-                                padding:'5px',
-                                borderRadius:'20px',
-                                paddingInline:'20px',
-                                width:'60%'
-                            }}>
-                                <h3>{quiz.title}</h3>
+        {!quizes ? (<h3>Loading...</h3>) : (
+            quizes.length===0 ? (
+                <p style={{fontSize:20}}>You have no Quizes Created</p>
+            ) : (
+                <div className="d-flex flex-column gap-3">
+                    {quizes.map((quiz)=>{
+                        return <div className="d-flex gap-5 align-items-center">
+                                <motion.div style={{
+                                    marginLeft:'3%',
+                                    border:'solid',
+                                    borderColor:'grey',
+                                    padding:'5px',
+                                    borderRadius:'20px',
+                                    paddingInline:'20px',
+                                    width:'60%',
+                                    cursor:'pointer'
+                                }}
+                                whileHover={{
+                                    scale:1.08
+                                }}
+                                whileTap={{
+                                    scale:0.5
+                                }}
+                                onClick={()=>navigate(`/admin/${quiz.title}`)}>
+                                    <h3>{quiz.title}</h3>
+                                </motion.div>
+                                <MdDelete style={{cursor:'pointer'}} size={40}
+                                onClick={()=>handleOnClickDeleteQuiz(quiz.title)}></MdDelete>
                             </div>
-                            <MdDelete style={{cursor:'pointer'}} size={40}
-                            onClick={()=>handleOnClickDeleteQuiz(quiz.title)}></MdDelete>
-                        </div>
-                    
-                })}
-            </div>
-        )}
+                        
+                    })}
+                </div>
+            ))
+        } 
         </>
     )
 

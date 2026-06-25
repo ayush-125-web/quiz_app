@@ -22,9 +22,9 @@ router.get('/dashboard',(req,res)=>{
      .catch(err=>console.log(err))
 })
 
-router.get('/:id',(req,res)=>{
-    Quiz.findById(req.params.id)
-     .then(result=>res.send(result))
+router.get('/:title',(req,res)=>{
+    Quiz.findOne({title:req.params.title})
+     .then(result=>res.json(result))
      .catch(err=>console.log(err))
 })
 
