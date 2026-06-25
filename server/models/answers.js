@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 const ansSchema=new mongoose.Schema(
     {
         roomId:{
-            type:mongoose.Schema.type.OptionId('Room'),required:true
+            type:mongoose.Schema.Types.OptionId('Room'),required:true
         },
         playerName:{
             type:String,required:true

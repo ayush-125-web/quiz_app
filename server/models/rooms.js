@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const roomSchema=new mongoose.Schema({
     quizId:{
-        type:mongoose.model.Schema.ObjectId,ref:'Quiz',required:true
+        type:mongoose.Schema.Types.ObjectId,ref:'Quiz',required:true
     },
     roomStatus:{type:String,enum:['waiting','active','ended'],required:true},
     code:{

@@ -3,12 +3,15 @@ import mongoose from "mongoose";
 
 const questionSchema= new mongoose.Schema(
     {
+        uniqueId:{
+            type:String,require:true
+        },
         quesText:{
             type:String,required:true
         },
-        option:[Number],
+        option:[String],
         corrOption:{
-            type:Number,required:true
+            type:String,required:true
         },
         points:{
             type:Number,default:10
