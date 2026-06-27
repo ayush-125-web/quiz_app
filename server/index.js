@@ -15,11 +15,16 @@ const io=new Server(httpServer,{
 
 app.use(cors({origin:'http://localhost:5173'}))
 app.use(express.json())
-app.use('/admin',quizRoutes)
 app.use('/admin',roomRoutes)
+app.use('/admin',quizRoutes)
+
 
 
 await connect_To_DB();
+
+import setUpSocket from './socket/socketHandler.js'
+setUpSocket(io)
+
 
 httpServer.listen(process.env.PORT,()=>{
     console.log('server is running')

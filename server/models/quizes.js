@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 const questionSchema= new mongoose.Schema(
     {
         uniqueId:{
-            type:String,require:true
+            type:String,required:true
         },
         quesText:{
             type:String,required:true

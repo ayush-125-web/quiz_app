@@ -22,16 +22,19 @@ router.get('/dashboard',(req,res)=>{
      .catch(err=>console.log(err))
 })
 
+router.delete('/dashboard',(req,res)=>{
+    console.log(req.body)
+    Quiz.deleteOne(req.body)
+     .then(result=>res.status(200).end())
+     .catch(err=>console.log(err))
+})
+
 router.get('/:title',(req,res)=>{
     Quiz.findOne({title:req.params.title})
      .then(result=>res.json(result))
      .catch(err=>console.log(err))
 })
 
-router.delete('/dashboard',(req,res)=>{
-    Quiz.deleteOne(req.body)
-     .then(result=>res.status(200).end())
-     .catch(err=>console.log(err))
-})
+
 
 export {router}

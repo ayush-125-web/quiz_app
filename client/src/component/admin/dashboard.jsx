@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import { useNavigate } from "react-router-dom"
 import { MdDelete } from "react-icons/md";
 import {motion} from 'framer-motion'
+import AvailRooms from "./availRooms";
 
 const DashBoard=()=>{
 
@@ -23,6 +24,12 @@ const DashBoard=()=>{
     },[])
 
     const handleOnClickDeleteQuiz= async (title)=>{
+        const res=await fetch(`http://localhost:3000/admin/room/${title}`,{
+            method:'DELETE',
+            headers:{
+                'content-type':'application/json'
+            }
+        })
         const response=await fetch('http://localhost:3000/admin/dashboard',{
             method:'DELETE',
             headers:{
@@ -33,13 +40,13 @@ const DashBoard=()=>{
             })
         })
 
+        
+
         getQuizes()
 
     }
 
-    const handleOnClickGetQuiz=async()=>{
-
-    }
+   
 
     
 
@@ -48,11 +55,15 @@ const DashBoard=()=>{
 
         <h1 style={{
             marginLeft:'4%'
-        }}>ADMIN</h1>
+        }}><strong>ADMIN</strong></h1>
+        <hr style={{
+            width:'20%',
+            marginLeft:'3%'
+        }}/>
         <div className="d-flex justify-content-between">
             <h2 style={{
                 marginLeft:'4%'
-            }}>DashBoard</h2>
+            }}><i>DashBoard</i></h2>
             <button style={{
                 backgroundColor:'peru',
                 color:'white',
@@ -70,18 +81,20 @@ const DashBoard=()=>{
             quizes.length===0 ? (
                 <p style={{fontSize:20}}>You have no Quizes Created</p>
             ) : (
-                <div className="d-flex flex-column gap-3">
+                <div className="d-flex justify-content-between gap-5">
+                    <div className="d-flex flex-column gap-3" style={{
+                        flex:'1.5'
+                    }}>
                     {quizes.map((quiz)=>{
                         return <div className="d-flex gap-5 align-items-center">
                                 <motion.div style={{
-                                    marginLeft:'3%',
-                                    border:'solid',
-                                    borderColor:'grey',
+                                    boxShadow:'0px 0px 20px rgba(0,0,0,0.8)',                               
                                     padding:'5px',
-                                    borderRadius:'20px',
+                                    borderRadius:'15px',
                                     paddingInline:'20px',
-                                    width:'60%',
-                                    cursor:'pointer'
+                                    cursor:'pointer',
+                                    width:'100%',
+                                    marginLeft:'2%'
                                 }}
                                 whileHover={{
                                     scale:1.08
@@ -97,7 +110,15 @@ const DashBoard=()=>{
                             </div>
                         
                     })}
+                    </div>
+                    <div style={{
+                        flex:'1'
+                    }} >
+                        <AvailRooms></AvailRooms>
+                    </div>
+                    
                 </div>
+                
             ))
         } 
         </>
