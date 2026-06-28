@@ -11,11 +11,11 @@ import 'dotenv/config'
 const app=express()
 const httpServer=createServer(app);
 const io=new Server(httpServer,{
-    cors:{origin:process.env.frontend_URL},
+    cors:{origin:process.env.FRONTEND_URL},
     method:['GET','POST','DELETE','PUT']
 })
 
-app.use(cors({origin:process.env.frontend_URL}))
+app.use(cors({origin:process.env.FRONTEND_URL}))
 app.use(express.json())
 app.use('/admin',roomRoutes)
 app.use('/admin',quizRoutes)
