@@ -34,6 +34,7 @@ Built as part of a managerial project to practice ***Node.js***, ***Express***, 
     | Database | MongoDB + Mongoose |
     | Unique Codes | nanoid |
 
+---
 
 ## 🏗️ Project Architecture
 
@@ -46,7 +47,7 @@ Built as part of a managerial project to practice ***Node.js***, ***Express***, 
     - **REST API** handles quiz CRUD, room creation, and fetching room/quiz data.
     - **Socket.io** handles everything that needs to happen in real time: players joining, questions being pushed, answers being submitted, and the leaderboard updating live.
 
-    ---
+---
 
 
 ## 📂 Folder Structure
@@ -81,7 +82,7 @@ Built as part of a managerial project to practice ***Node.js***, ***Express***, 
     ### 1. Clone the repository
     ```bash
     git clone <repo-link-here>
-    cd quizroom
+    cd quiz_app
     ```
 
     ### 2. Backend Setup
@@ -116,5 +117,8 @@ The app will be available at `http://localhost:5173` (frontend) and the backend 
 ---
 
 ## Demo Video
+
+
+---
 
  
