@@ -46,7 +46,7 @@ const QuizPage=()=>{
         return(
             <>
             <div className="ms-5 mt-3">
-                <h2>{quiz.title}</h2>
+                <h2><strong>{quiz.title}</strong></h2>
                 <hr/>
                 <div className="d-flex gap-2 justify-content-between">
                     <div className="d-flex flex-column gap-1"
@@ -82,15 +82,19 @@ const QuizPage=()=>{
                         })
                         }
                     </div> 
-                    <div>
+                    <div style={{
+                        width:'18%',
+                        marginRight:'5%'
+                    }}>
                         <button style={{
-                        marginRight:'10%',
+                        marginRight:'15%',
                         border:'none',
                         backgroundColor:'skyblue',
                         paddingInline:'30px',
                         color:'white',
                         padding:'3%',
-                        borderRadius:'25px'
+                        borderRadius:'25px',
+                        width:'100%'
                     }}
                     onClick={()=>handleOnClickCreateRoom(quiz._id)}>Create Room</button>
 
