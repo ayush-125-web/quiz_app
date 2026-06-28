@@ -40,6 +40,7 @@ const AvailRooms=()=>{
                         
                     }}>
                     {
+                        rooms!=0 ?
                         rooms.map((room)=>{
                         return <l>
                                 <div className="d-flex justify-content-between">
@@ -48,15 +49,21 @@ const AvailRooms=()=>{
                                     <p>Room Code : {room.code}</p>
                                     <p>Room Status: <i>{room.roomStatus}</i></p>
                                 </div> 
-                                <button style={{
+                                {room.roomStatus!='ended'? <button style={{
                                     height:'7%',
                                     paddingInline:'30px'
                                 }}
-                                onClick={()=>navigate(`/admin/${title}/${room.code}`)}>Enter</button>
-                            </div>
-                            
+                                onClick={()=>navigate(`/admin/${title}/${room.code}`)}>Enter</button>:(
+                                    <button style={{
+                                        height:'7%',
+                                        paddingInline:'30px',
+                                        cursor:'not-allowed'
+                                    }} disabled='true'>Ended</button>
+                                )}
+                                
+                            </div>   
                         </l>   
-                    })}
+                    }):<p>No Room Available</p>}
                 </ul>
             }
             

@@ -1,11 +1,13 @@
 import socket from "../../utilies/socket"
-import { useParams,useLocation } from "react-router-dom"
+import { useParams,useLocation, useNavigate } from "react-router-dom"
 import { useState,useEffect } from "react";
+
 
 const PlayerRoom=()=>{
     const {code}=useParams();
     const location=useLocation();
     const name=location.state?.name
+    const navigate=useNavigate()
 
     const [question, setQuestion] = useState(null)
     const [leaderboard, setLeaderboard] = useState([])
@@ -40,11 +42,10 @@ const PlayerRoom=()=>{
         socket.on('quiz-ended',(obj)=>{
             setLeaderboard(obj.lb)
             setQuestion(null)
+            setEnded(true)
         })
 
-        socket.on('quiz-ended',(obj)=>{
-            setEnded(obj.ended)
-        })
+        
 
         return()=>{
             socket.off('new-question')
@@ -143,8 +144,18 @@ const PlayerRoom=()=>{
                 </div>
                 )
             )}
-            
-            
+            {ended && <div className="d-flex flex-column align-items-center gap-2 mt-5">
+                <div>Quiz is Ended!</div>
+                <div>Final LeaderBoard is Above! 👆👆</div>
+                <div>Thanks For participating ❤️❤️</div>
+                <button onClick={()=>navigate('/participant')} style={{
+                    outline:'none',
+                border:'none',
+                backgroundColor:'lightgreen',
+                borderRadius:'15px',
+                paddingInline:'30%'
+                }}>Exit Room</button>
+                </div>}
          </div>
         </>
     )

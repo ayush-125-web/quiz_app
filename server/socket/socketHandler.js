@@ -56,7 +56,7 @@ const setUpSocket=(io)=>{
             if(!currQues){
                 room.roomStatus='ended'
                 await room.save()
-                return io.to(code).emit('quiz-ended',{ended:true,lb:room.players.sort((x,y)=>y.score-x.score)})
+                return io.to(code).emit('quiz-ended',{ended:true,roomStatus:room.roomStatus,lb:room.players.sort((x,y)=>y.score-x.score)})
             }
 
             const ques={

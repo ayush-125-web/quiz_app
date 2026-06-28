@@ -9,7 +9,7 @@ const router=express.Router();
 router.delete('/room/:title',async(req,res)=>{
     try{
         const quiz=await Quiz.findOne({title:req.params.title})
-        const room=await Room.deleteOne({quizId:quiz._id})
+        await Room.deleteOne({quizId:quiz._id})
         res.status(201).end()
     }
     catch(err){

@@ -53,6 +53,8 @@ const AdminRoomPage=()=>{
         })
         socket.on('quiz-ended',(obj)=>{
             setEnded(obj.ended)
+            setPlayers(obj.lb)
+            setStatus(obj.roomStatus)
 
         })
     }
@@ -60,10 +62,10 @@ const AdminRoomPage=()=>{
     return(
         <>
         <div className="ms-4">
-            <h1>Room Code : {code}</h1>
+            <h1>Room Code : <strong>{code}</strong></h1>
           <hr/>
           
-          <h2>Player joined : {players.length}</h2>
+          <h2>Player joined : <strong>{players.length}</strong></h2>
           <hr/>
           
 
@@ -92,32 +94,39 @@ const AdminRoomPage=()=>{
                     
                 )}     
             </div>
-
-            <div className='d-flex flex-column me-4' style={{
-                    boxShadow:'0px 0px 15px rgba(0,0,0,0.7)',
-                    padding:'16px',
-                    borderRadius:'18px',
-                    width:'30vw'
-                    }}>
-                {players.map((p)=>{
-                    return <div className="d-flex justify-content-between">
-                        <div>{p.name}</div>
-                        <div>Score:{p.score}</div>
-                    </div>
-                })}
-            </div>
-
+            <div style={{
+                marginTop:'-3%'
+            }}>
+                <h2><i>Live LeaderBoard</i></h2>
+                <hr/>
+                <div className='d-flex flex-column me-4' style={{
+                        boxShadow:'0px 0px 15px rgba(0,0,0,0.7)',
+                        padding:'16px',
+                        borderRadius:'18px',
+                        width:'30vw'
+                        }}>
+                    {players.map((p)=>{
+                        return <div className="d-flex justify-content-between">
+                            <div>{p.name}</div>
+                            <div>Score:{p.score}</div>
+                        </div>
+                    })}
+                </div>
           </div>
+
+            </div>
+            
 
           <div className="ms-4 d-flex justify-content-between">
             <div>
-                {status=='waiting'?<button style={{
+                {status=='waiting'&&<button style={{
                 outline:'none',
                 border:'none',
                 backgroundColor:'lightgreen',
                 borderRadius:'15px',
                 paddingInline:'70%'
-            }}onClick={handleOnClickNext}>Start</button>:<button style={{
+            }}onClick={handleOnClickNext}>Start</button>}
+            {status=='active' && <button style={{
                 outline:'none',
                 border:'none',
                 color:'white',
@@ -133,15 +142,9 @@ const AdminRoomPage=()=>{
                 borderRadius:'15px',
              }}
              onClick={()=>navigate('/admin/dashboard')}>Exit Room</button>} 
-            </div>
-              
-             
+            </div>      
+          </div>     
           </div>
-
-          
-          </div>
-
-
         </div>  
         </>
     )
