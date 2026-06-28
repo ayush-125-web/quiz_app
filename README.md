@@ -115,9 +115,9 @@ The app will be available at `http://localhost:5173` (frontend) and the backend 
 
 
 ---
+## Hosted Link
 
-## Demo Video
-
+https://quizbattle123.netlify.app/
 
 ---
 
