@@ -12,7 +12,7 @@ const DashBoard=()=>{
     const navigate=useNavigate()
 
     const getQuizes=async()=>{
-        const res=await fetch(import.meta.env.VITE_API_URL)
+        const res=await fetch(`${import.meta.env.VITE_API_URL}/admin/dashboard`)
         const data=await res.json();
         setQuizzes(data)
     }

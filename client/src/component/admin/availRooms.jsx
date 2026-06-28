@@ -8,7 +8,7 @@ const AvailRooms=()=>{
     const [rooms,setRooms]=useState(null)
 
     const getRooms=async()=>{
-        const response= await fetch(import.meta.env.VITE_API_URL,{
+        const response= await fetch(`${import.meta.env.VITE_API_URL}/admin/rooms`,{
             method:'GET',
             headers:{
                 'content-type':'application/json'
