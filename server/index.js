@@ -12,7 +12,7 @@ const app=express()
 const httpServer=createServer(app);
 const io=new Server(httpServer,{
     cors:{origin:process.env.FRONTEND_URL},
-    method:['GET','POST','DELETE','PUT']
+    methods:['GET','POST','DELETE','PUT']
 })
 
 app.use(cors({origin:process.env.FRONTEND_URL}))
