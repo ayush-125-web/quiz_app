@@ -6,14 +6,16 @@ import { Server } from 'socket.io'
 import cors from 'cors'
 import {router as quizRoutes} from './routes/quiz.js'
 import {router as roomRoutes} from './routes/room.js'
+import 'dotenv/config'
 
 const app=express()
 const httpServer=createServer(app);
 const io=new Server(httpServer,{
-    cors:{origin:'http://localhost:5173'}
+    cors:{origin:process.env.frontend_URL},
+    method:['GET','POST','DELETE','PUT']
 })
 
-app.use(cors({origin:'http://localhost:5173'}))
+app.use(cors({origin:process.env.frontend_URL}))
 app.use(express.json())
 app.use('/admin',roomRoutes)
 app.use('/admin',quizRoutes)
