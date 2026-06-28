@@ -10,7 +10,8 @@ const AddQuiz=()=>{
     const [ques,setQues]=useState([])
     const navigate=useNavigate();
 
-    const handleOnSubmit=async()=>{
+    const handleOnSubmit=async(e)=>{
+        e.preventDefault()
         const response=await fetch(`${import.meta.env.VITE_API_URL}/admin/dashboard`,{
             method:'POST',
             headers:{
