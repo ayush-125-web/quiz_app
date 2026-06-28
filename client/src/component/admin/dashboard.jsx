@@ -81,7 +81,7 @@ const DashBoard=()=>{
             quizes.length===0 ? (
                 <p style={{fontSize:20}}>You have no Quizes Created</p>
             ) : (
-                <div className="d-flex justify-content-between gap-5">
+                <div className="d-flex flex-column flex-md-row justify-content-between gap-5 ms-4">
                     <div className="d-flex flex-column gap-3" style={{
                         flex:'1.5'
                     }}>

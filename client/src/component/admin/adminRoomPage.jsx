@@ -72,12 +72,13 @@ const AdminRoomPage=()=>{
           {status=='waiting' && <p>Waiting for players....</p>}
 
           <div className="d-flex flex-column mt-5 gap-5">
-            <div className="d-flex justify-content-between" >
-            <div className='d-flex flex-column w-50 ms-3' style={{
+            <div className="d-flex flex-column flex-md-row gap-5 justify-content-between" >
+            <div className='d-flex flex-column ms-3' style={{
                     boxShadow:'0px 0px 15px rgba(0,0,0,0.7)',
                     padding:'16px',
                     borderRadius:'18px',
-                    width:'100%',
+                    flex:2,
+                    width:'70%',
                     
                 }}>
                 {!question ? <p>Quiz is Yet To Start</p>:(
@@ -95,15 +96,17 @@ const AdminRoomPage=()=>{
                 )}     
             </div>
             <div style={{
-                marginTop:'-3%'
+                marginTop:'5%',
+                flex:1,
+                width:'100%'
             }}>
                 <h2><i>Live LeaderBoard</i></h2>
                 <hr/>
-                <div className='d-flex flex-column me-4' style={{
+                <div className='d-flex flex-column' style={{
                         boxShadow:'0px 0px 15px rgba(0,0,0,0.7)',
                         padding:'16px',
                         borderRadius:'18px',
-                        width:'30vw'
+                        width:'90%'
                         }}>
                     {players.map((p)=>{
                         return <div className="d-flex justify-content-between">

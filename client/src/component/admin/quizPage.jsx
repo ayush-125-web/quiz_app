@@ -48,7 +48,7 @@ const QuizPage=()=>{
             <div className="ms-5 mt-3">
                 <h2><strong>{quiz.title}</strong></h2>
                 <hr/>
-                <div className="d-flex gap-2 justify-content-between">
+                <div className="d-flex flex-column flex-md-row gap-2 justify-content-between me-4">
                     <div className="d-flex flex-column gap-1"
                     style={{
                         flex:0.6

@@ -111,12 +111,15 @@ const PlayerRoom=()=>{
             {lbPopUp?(<div className="d-flex flex-column align-items-center">
                 <h3>LeaderBoard</h3>
                 <hr/>
-                <div className="d-flex flex-column" style={{
+                <div className='d-flex justify-content-center'style={{
+                    width:'100vw'
+                }}>
+                    <div className="d-flex flex-column" style={{
                     boxShadow:'0px 0px 15px rgba(0,0,0,0.8)',
                     padding:'4%',
                     paddingInline:'15%',
-                    width:'30vw',
-                    borderRadius:'15px'
+                    borderRadius:'15px',
+                    width:'70%'
                 }}>
                     {leaderboard.map((p,idx)=>{
                         return <div className="d-flex justify-content-between">
@@ -127,9 +130,11 @@ const PlayerRoom=()=>{
                         
                     })}
                 </div>
+
+                </div>       
             </div>):(
                 !question ? <p>Waiting for Question...</p>:(
-                    <div>
+                    <div style={{width:'60vw'}}>
                     <p>Time Left: {timer}</p>
                     <p>{question.quesText}</p>
                     <div className="d-flex flex-column gap-2">
