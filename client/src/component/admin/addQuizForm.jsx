@@ -22,7 +22,7 @@ const AddQuiz=()=>{
             })
         })
 
-        const data=await response.json();
+        if(response.ok) navigate('/admin/dashboard')
     }
 
     const handleOnClickDelete=(id)=>{
@@ -82,7 +82,7 @@ const AddQuiz=()=>{
                         })
                     }
                 </div>      
-                <button type="submit" onClick={()=>navigate('/admin/dashboard')}>CREATE QUIZ</button>
+                <button type="submit">CREATE QUIZ</button>
             </form>
          </div>
         </>
