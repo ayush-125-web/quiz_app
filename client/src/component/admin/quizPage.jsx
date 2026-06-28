@@ -8,7 +8,7 @@ const QuizPage=()=>{
     const navigate=useNavigate()
 
     const handleOnClickCreateRoom=async (quizId)=>{
-        const response= await fetch(`http://localhost:3000/admin/${title}/create`,{
+        const response= await fetch(`${import.meta.env.Vite_API_URL}/admin/${title}/create`,{
             method:'POST',
             headers:{
                 'Content-type':'application/json'
@@ -24,7 +24,7 @@ const QuizPage=()=>{
     }
 
     useEffect(()=>{
-        fetch(`http://localhost:3000/admin/${title}`,{
+        fetch(`${import.meta.env.Vite_API_URL}/admin/${title}`,{
         method:'GET',
         headers:{
             'content-type':'application/json'

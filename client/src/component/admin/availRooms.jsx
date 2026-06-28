@@ -8,7 +8,7 @@ const AvailRooms=()=>{
     const [rooms,setRooms]=useState(null)
 
     const getRooms=async()=>{
-        const response= await fetch('http://localhost:3000/admin/rooms',{
+        const response= await fetch(import.meta.env.Vite_API_URL,{
             method:'GET',
             headers:{
                 'content-type':'application/json'

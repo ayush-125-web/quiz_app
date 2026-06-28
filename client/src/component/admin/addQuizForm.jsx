@@ -11,7 +11,7 @@ const AddQuiz=()=>{
     const navigate=useNavigate();
 
     const handleOnSubmit=async()=>{
-        const response=await fetch('http://localhost:3000/admin/dashboard',{
+        const response=await fetch(import.meta.env.Vite_API_URL,{
             method:'POST',
             headers:{
                 'Content-type':'application/json',

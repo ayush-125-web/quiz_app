@@ -12,7 +12,7 @@ const DashBoard=()=>{
     const navigate=useNavigate()
 
     const getQuizes=async()=>{
-        const res=await fetch('http://localhost:3000/admin/dashboard')
+        const res=await fetch(import.meta.env.Vite_API_URL)
         const data=await res.json();
         setQuizzes(data)
     }
@@ -24,13 +24,13 @@ const DashBoard=()=>{
     },[])
 
     const handleOnClickDeleteQuiz= async (title)=>{
-        const res=await fetch(`http://localhost:3000/admin/room/${title}`,{
+        const res=await fetch(`${import.meta.env.Vite_API_URL}/admin/room/${title}`,{
             method:'DELETE',
             headers:{
                 'content-type':'application/json'
             }
         })
-        const response=await fetch('http://localhost:3000/admin/dashboard',{
+        const response=await fetch(`${import.meta.env.Vite_API_URL}/admin/dashboard`,{
             method:'DELETE',
             headers:{
                 'Content-type':'application/json'
